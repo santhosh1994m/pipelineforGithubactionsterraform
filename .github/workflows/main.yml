@@ -1,6 +1,8 @@
 name: Terraform
-on: [push]
-
+on:
+  push:
+    branches:
+      - master
 jobs:
   on-push:
     name: On push
@@ -8,11 +10,6 @@ jobs:
     steps:
     - name: Checkout Repo
       uses: actions/checkout@v1
-      
-    - name: Filter to PR Opened
-      uses: actions/bin/filter@master
-      with:
-        args: "action 'opened|rerequested|synchronize'"
             
     - name: Terraform Init
       uses: hashicorp/terraform-github-actions/init@v0.4.5
